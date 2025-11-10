@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Каталог фильмов</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">🎬 MovieShop</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="product.html">Фильмы</a>
+      <a href="contacts.html">Контакты</a>
+      <span id="auth-user" style="display: none;"></span>
+      <a href="#" id="logout" style="display: none;">Выйти</a>
+      <a href="#" id="open-login">Войти</a>
+      <a href="#" id="open-register">Регистрация</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Наш каталог</h1>
+    <section class="catalog">
+      <div class="movie-card" data-movie-name="Ходячий замок" data-movie-price="299">
+        <img src="img/movie1.jpg" alt="Ходячий замок">
+        <h3>Ходячий замок</h3>
+        <p>Описание фильма: Японская анимация про заколдованного мальчика.</p>
+        <p> Жанр: Фэнтези, Романтика</p>
+         <p>Актёры:Хигашикато Джоске .</p> 
+         <p>Режиссёр: Хаяо Миядзаки.</p>
+        <p><strong>Цена:</strong> 299 ₽</p>
+        <button class="btn-buy" data-movie="Ходячий замок" data-price="299">Купить</button>
+      </div>
+      <div class="movie-card" data-movie-name="Буратино" data-movie-price="349">
+        <img src="img/movie2.jpg" alt="Буратино">
+        <h3>Буратино</h3>
+        <p>Описание фильма: сказка, про деревянного мальчика.</p>
+        <p> Жанр: Фэнтези.</p>
+         <p>Актёры: Сергей Бурунов.</p> 
+         <p>Режиссёр: Какой-то мужик.</p>
+        <p><strong>Цена:</strong> 349 ₽</p>
+        <button class="btn-buy" data-movie="Буратино" data-price="349">Купить</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Модальные окна -->
+  <div class="modal-backdrop" id="modal-login">
+    <div class="modal">
+      <h2>Вход</h2>
+      <form id="form-login">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+        <button type="button" data-close>Отмена</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-register">
+    <div class="modal">
+      <h2>Регистрация</h2>
+      <form id="form-register">
+        <input type="text" id="reg-name" placeholder="Имя" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Пароль" required>
+        <input type="password" id="reg-password-confirm" placeholder="Подтвердите пароль" required>
+        <button type="submit">Зарегистрироваться</button>
+        <button type="button" data-close>Отмена</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модальное окно формы покупки -->
+  <div class="modal-backdrop" id="modal-purchase">
+    <div class="modal modal-large">
+      <h2>Оформление заказа</h2>
+      <form id="form-purchase">
+        <div class="form-group">
+          <label>Фильм:</label>
+          <input type="text" id="purchase-movie" readonly>
+        </div>
+        <div class="form-group">
+          <label>Цена за единицу:</label>
+          <input type="text" id="purchase-price" readonly>
+        </div>
+        <div class="form-group">
+          <label>Количество:</label>
+          <input type="number" id="purchase-quantity" min="1" max="10" value="1" required>
+        </div>
+        <div class="form-group">
+          <label>Итого:</label>
+          <input type="text" id="purchase-total" readonly>
+        </div>
+        <hr>
+        <div class="form-group">
+          <label>Ваше имя:</label>
+          <input type="text" id="purchase-name" placeholder="Иван Иванов" required>
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" id="purchase-email" placeholder="ivan@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Телефон:</label>
+          <input type="tel" id="purchase-phone" placeholder="+7 (999) 123-45-67" required>
+        </div>
+        <div class="form-group">
+          <label>Адрес доставки:</label>
+          <textarea id="purchase-address" placeholder="Город, улица, дом, квартира" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Способ оплаты:</label>
+          <select id="purchase-payment" required>
+            <option value="">Выберите способ оплаты</option>
+            <option value="card">Банковская карта</option>
+            <option value="cash">Наличными при получении</option>
+            <option value="online">Онлайн оплата</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Оформить заказ</button>
+          <button type="button" data-close>Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

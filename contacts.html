@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты — MovieShop</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Подключение Яндекс.Карт API -->
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="logo">🎬 MovieShop</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="product.html">Фильмы</a>
+      <a href="contacts.html">Контакты</a>
+      <span id="auth-user" style="display: none;"></span>
+      <a href="#" id="logout" style="display: none;">Выйти</a>
+      <a href="#" id="open-login">Войти</a>
+      <a href="#" id="open-register">Регистрация</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Контактная информация</h1>
+    <p>Телефон: +7 (495) 123-45-67</p>
+    <p id="address" data-lat="55.75222" data-lon="37.61556">Адрес: Москва, ул. Арбат, 10</p>
+
+    <div id="ymap" style="width:100%;height:400px;"></div>
+  </main>
+
+  <!-- Модальные окна -->
+  <div class="modal-backdrop" id="modal-login">
+    <div class="modal">
+      <h2>Вход</h2>
+      <form id="form-login">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+        <button type="button" data-close>Отмена</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-register">
+    <div class="modal">
+      <h2>Регистрация</h2>
+      <form id="form-register">
+        <input type="text" id="reg-name" placeholder="Имя" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Пароль" required>
+        <input type="password" id="reg-password-confirm" placeholder="Подтвердите пароль" required>
+        <button type="submit">Зарегистрироваться</button>
+        <button type="button" data-close>Отмена</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

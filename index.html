@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>MovieShop — Главная</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">🎬 MovieShop</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="product.html">Фильмы</a>
+      <a href="contacts.html">Контакты</a>
+      <span id="auth-user" style="display: none;"></span>
+      <a href="#" id="logout" style="display: none;">Выйти</a>
+      <a href="#" id="open-login">Войти</a>
+      <a href="#" id="open-register">Регистрация</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Добро пожаловать в MovieShop!</h1>
+    <p>Лучшие фильмы по доступным ценам.</p>
+    <div class="movie-gallery">
+      <img src="img/movie1.jpg">
+      <img src="img/movie2.jpg">
+      <img src="img/movie3.jpg">
+      <img src="img/movie4.jpg">
+      <img src="img/movie5.jpg">
+    </div>
+  </main>
+
+  <!-- Модальные окна -->
+  <div class="modal-backdrop" id="modal-login">
+    <div class="modal">
+      <h2>Вход</h2>
+      <form id="form-login">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+        <button type="button" data-close>Отмена</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-register">
+    <div class="modal">
+      <h2>Регистрация</h2>
+      <form id="form-register">
+        <input type="text" id="reg-name" placeholder="Имя" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Пароль" required>
+        <input type="password" id="reg-password-confirm" placeholder="Подтвердите пароль" required>
+        <button type="submit">Зарегистрироваться</button>
+        <button type="button" data-close>Отмена</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
