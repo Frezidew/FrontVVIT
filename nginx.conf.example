@@ -4,7 +4,7 @@
 
 server {
     listen 80;
-    server_name ваш-домен.com www.ваш-домен.com;
+    server_name BERTOV.RUN.PLACE BERTOV.RUN.PLACE;
 
     # Логи
     access_log /var/log/nginx/movieworld-access.log;
@@ -15,7 +15,7 @@ server {
 
     # Статические файлы (HTML, CSS, JS, изображения)
     location / {
-        root /home/ваш-пользователь/FrontVVIT;
+        root /home/root/FrontVVIT;
         try_files $uri $uri/ /index.html;
         index index.html;
         
@@ -46,7 +46,7 @@ server {
 
     # Прямой доступ к изображениям (опционально)
     location /img {
-        alias /home/ваш-пользователь/FrontVVIT/img;
+        alias /home/root/FrontVVIT/img;
         expires 30d;
         add_header Cache-Control "public";
     }
@@ -62,13 +62,13 @@ server {
 # Редирект с HTTP на HTTPS (после настройки SSL)
 # server {
 #     listen 80;
-#     server_name ваш-домен.com www.ваш-домен.com;
+#     server_name BERTOV.RUN.PLACE BERTOV.RUN.PLACE;
 #     return 301 https://$server_name$request_uri;
 # }
 #
 # server {
 #     listen 443 ssl http2;
-#     server_name ваш-домен.com www.ваш-домен.com;
+#     server_name BERTOV.RUN.PLACE BERTOV.RUN.PLACE;
 #
 #     ssl_certificate /etc/letsencrypt/live/ваш-домен.com/fullchain.pem;
 #     ssl_certificate_key /etc/letsencrypt/live/ваш-домен.com/privkey.pem;
