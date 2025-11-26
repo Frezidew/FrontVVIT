@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
 
   qsa('.modal-backdrop').forEach(backdrop => {
+    if (backdrop.dataset.lockBackdrop === 'true') return;
     backdrop.addEventListener('click', (e) => {
       if (e.target === backdrop) hideModal(backdrop);
     });
@@ -252,6 +253,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateAuthUI();
 
+  function fillPurchaseFormWithAuth() {
+    if (!modalPurchase) return;
+    const auth = readAuth();
+    if (!auth) return;
+    const nameInput = qs('#purchase-name', modalPurchase);
+    const emailInput = qs('#purchase-email', modalPurchase);
+    if (nameInput) nameInput.value = auth.name || auth.email || '';
+    if (emailInput) emailInput.value = auth.email || '';
+  }
+
   // Обработка кнопок "Купить"
   qsa('.btn-buy').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -263,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         qs('#purchase-movie', modalPurchase).value = movieName;
         qs('#purchase-price', modalPurchase).value = moviePrice + ' ₽';
         qs('#purchase-quantity', modalPurchase).value = 1;
+        fillPurchaseFormWithAuth();
         updatePurchaseTotal();
         showModal(modalPurchase);
       }

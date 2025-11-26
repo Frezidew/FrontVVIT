@@ -75,3 +75,6 @@ echo "  2. Настроить .env файл с правильными данны
 echo "  3. Настроить Nginx (см. DEPLOY_HOSTVDS.md)"
 echo "  4. Настроить автозапуск: pm2 startup && pm2 save"
 
+
+
+

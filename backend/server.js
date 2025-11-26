@@ -1,44 +1,37 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
-import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcrypt';
 import cors from 'cors';
 
-dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // Подключение к MySQL с обработкой ошибок
-let pool;
-try {
-  pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASS || '',
-    database: process.env.DB_NAME || 'movieworld',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'movieworld',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+
+// Проверка подключения
+pool.getConnection()
+  .then(connection => {
+    console.log('✅ Подключение к БД установлено');
+    connection.release();
+  })
+  .catch(err => {
+    console.error('❌ Ошибка подключения к БД:', err.message);
+    console.log('⚠️  Сервер будет работать в режиме без БД (fallback на localStorage)');
   });
-  
-  // Проверка подключения
-  pool.getConnection()
-    .then(connection => {
-      console.log('✅ Подключение к БД установлено');
-      connection.release();
-    })
-    .catch(err => {
-      console.error('❌ Ошибка подключения к БД:', err.message);
-      console.log('⚠️  Сервер будет работать в режиме без БД (fallback на localStorage)');
-    });
-} catch (err) {
-  console.error('❌ Ошибка создания пула подключений:', err.message);
-}
 
 // Middleware
 app.use(cors());
